@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('donasis', function (Blueprint $table) {
-            $table->id('id_donasi');
+            $table->id('id');
             $table->unsignedBigInteger('id_donatur');
-            $table->foreign('id_donatur')->references('id_user')->on('users');
+            $table->foreign('id_donatur')->references('id')->on('users');
             $table->unsignedBigInteger('id_mahasiswa');
-            $table->foreign('id_mahasiswa')->references('id_user')->on('users');
+            $table->foreign('id_mahasiswa')->references('id')->on('users');
             $table->unsignedBigInteger('id_permintaan');
-            $table->foreign('id_permintaan')->references('id_permintaan')->on('permintaans');
+            $table->foreign('id_permintaan')->references('id')->on('permintaans');
             $table->String('jenis_donasi');
             $table->string('nama_barang');
             $table->string('deskripsi');

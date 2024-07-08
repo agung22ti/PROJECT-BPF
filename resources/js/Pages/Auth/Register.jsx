@@ -4,12 +4,16 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import SelectInput from '@/Components/SelectInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        no_phone: '',
+        alamat: '',
+        jk: '',
         password: '',
         password_confirmation: '',
     });
@@ -63,6 +67,56 @@ export default function Register() {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="alamat" value="Alamat" />
+
+                    <TextInput
+                        id="alamat"
+                        type="text"
+                        name="alamat"
+                        value={data.alamat}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={(e) => setData('alamat', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.alamat} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="jk" value="Jenis Kelamin" />
+
+                    <SelectInput
+                        id="jk"
+                        name="jk"
+                        onChange={(e) => setData('jk', e.target.value)}
+                        required
+                    >
+                    <option value="">Select Status</option>
+                    <option value="pria">Pria</option>
+                    <option value="wanita">Wanita</option>
+                    <InputError message={errors.jk} className="mt-2" />
+                    </SelectInput>
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="no_phone" value="Phone Number" />
+
+                    <TextInput
+                        id="no_phone"
+                        type="text"
+                        name="no_phone"
+                        value={data.no_phone}
+                        className="mt-1 block w-full"
+                        autoComplete="username"
+                        onChange={(e) => setData('no_phone', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.no_phone} className="mt-2" />
                 </div>
 
                 <div className="mt-4">

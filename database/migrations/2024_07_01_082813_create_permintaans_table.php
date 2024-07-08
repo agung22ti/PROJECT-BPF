@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('permintaans', function (Blueprint $table) {
-            $table->id('id_permintaan');
+            $table->id('id');
             $table->unsignedBigInteger('id_mahasiswa');
-            $table->foreign('id_mahasiswa')->references('id_user')->on('users');
+            $table->foreign('id_mahasiswa')->references('id')->on('users');
             $table->String('judul');
             $table->string('deskripsi');
             $table->string('file');
